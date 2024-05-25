@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Doodle Jump HTML Game</title>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="375" height="667" id="game"></canvas>
+    <script>
+        const canvas = document.getElementById('game');
+        const context = canvas.getContext('2d');
+
+        // Width and height of each platform and where platforms start
+        const platformWidth = 65;
+        const platformHeight = 20;
+        const platformStart = canvas.height - 50;
+
+        // Player physics
+        const gravity = 0.33;
+        const drag = 0.3;
+        const bounceVelocity = -12.5;
+
+        // Minimum and maximum vertical space between each platform
+        let minPlatformSpace = 15;
+        let maxPlatformSpace = 20;
+
+        // Information about each platform (the first platform starts in the bottom middle of the screen)
+        let platforms = [
+            {
+                x: canvas.width / 2 - platformWidth / 2,
+                y: platformStart
+            }
+        ];
+
+        // Get a random number between the min (inclusive) and max (exclusive)
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Fill the initial screen with platforms
+        let y = platformStart;
+        while (y > 0) {
+            // The next platform can be placed above the previous one with a space somewhere between the min and max space
+            y -= random(minPlatformSpace, maxPlatformSpace);
+            platforms.push({
+                x: random(0, canvas.width - platformWidth),
+                y: y
+            });
+        }
+
+        // Your game logic goes here (player movement, collision detection, etc.)
+
+        // Draw the platforms (you can use context.fillRect)
+
+        // Update player position (apply gravity, handle jumping, etc.)
+
+        // Handle game over conditions
+
+        // Add event listeners for controls (e.g., arrow keys)
+
+        // Start the game loop (requestAnimationFrame)
+
+    </script>
+</body>
+</html>
